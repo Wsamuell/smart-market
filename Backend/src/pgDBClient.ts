@@ -1,11 +1,12 @@
 import { Client } from 'pg';
+import 'dotenv/config';
 
 const client = new Client({
-  host: 'localhost', // BKMRK: make sure this is environment based
-  port: 5432,
-  database: 'marketplace_db',
-  user: 'postgres',
-  password: 'secretpassword!!', // BKMRK: make sure this is environment based as well
+  host: process.env.DB_HOST,
+  port: parseInt(process.env.DB_PORT!),
+  database: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS, // BKMRK: make sure this is environment based as well
 });
 
 const connectAndQuery = async () => {
